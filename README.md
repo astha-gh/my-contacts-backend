@@ -18,3 +18,7 @@ A RESTful API for managing a contact list using MongoDB and Express.js.
 1. Clone the repo:
    ```bash
    git clone https://github.com/astha-gh/my-contacts-api.git
+
+2. Install Dependencies
+   ```bash
+   npm install
