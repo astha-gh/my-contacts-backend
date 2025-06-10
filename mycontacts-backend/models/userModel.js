@@ -3,16 +3,16 @@ const mongoose = require("mongoose");
 const userSchema = mongoose.Schema({
     username : {
         type : String,
-        require : [true , "Please enter username"],
+        required : [true , "Please enter username"],
     },
     email : {
         type : String,
-        require : [true , "Please add the user email address"],
+        required : [true , "Please add the user email address"],
         unique : [true , "Email address already taken"],
     },
     password : {
         type : String,
-        require : [true , "Please add user password"],
+        required : [true , "Please add user password"],
     },
 } , {
     timestamps : true,
