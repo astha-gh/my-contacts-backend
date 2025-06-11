@@ -4,42 +4,41 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 //@description register a contacts
-//@routes POST /api/contacts/users/register
+//@routes POST /api/users/register
 //@access public
 const registerUser = asyncHandler(async (req, res) => {
     const { username, email, password } = req.body;
+
     if (!username || !email || !password) {
         res.status(400);
         throw new Error("All fields are mandatory");
     }
+
     const userAvailable = await User.findOne({ email });
     if (userAvailable) {
         res.status(400);
-        throw new Error("User already available");
+        throw new Error("User already exists");
     }
-    //Hash Password
+
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("Hashed Password : ", hashedPassword);
+
     const user = await User.create({
         username,
         email,
         password: hashedPassword,
     });
-    console.log(`User created  ${user}`);
+
     if (user) {
-        res.status(202).json({ _id: user.id, email: user.email });
-    }
-    else {
+        res.status(201).json({ _id: user.id, email: user.email });
+    } else {
         res.status(400);
         throw new Error("User data is not valid");
     }
-    res.json({ message: "Register the user" });
 });
 
 
-
 //@description login
-//@routes POST /api/contacts/users/login
+//@routes POST /api/users/login
 //@access public
 const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
@@ -70,7 +69,7 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 //@description current user information
-//@routes GET /api/contacts/users/current
+//@routes GET /api/users/current
 //@access private
 const currentUser = asyncHandler(async (req, res) => {
     res.json(req.user);
