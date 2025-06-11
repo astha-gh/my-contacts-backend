@@ -15,6 +15,11 @@ app.use('/api/contact', require("./routes/contactRoutes"));
 app.use('/api/users', require("./routes/userRoutes"));
 app.use(errorHandler);
 
+app.get("/", (req, res) => {
+    res.send("Server is running ✅");
+});
+  
+
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`)
 });
