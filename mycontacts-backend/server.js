@@ -3,7 +3,7 @@ const errorHandler = require('./middleware/errorHandler');
 const Connectdb = require('./config/dbConnection');
 const dotenv = require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 8080;
 const cors = require("cors");
 
 
