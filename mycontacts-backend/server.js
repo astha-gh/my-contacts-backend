@@ -12,8 +12,8 @@ Connectdb();
 
 const corsOptions = {
     origin: [
-        'http://localhost:3000', // For development
-        'https://contactvault202.netlify.app' // Will replace with your actual URL
+        'http://localhost:3000', 
+        'https://contactvault202.netlify.app' 
     ],
     credentials: true,
     optionsSuccessStatus: 200
