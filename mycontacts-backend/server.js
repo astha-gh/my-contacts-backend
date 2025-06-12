@@ -11,9 +11,11 @@ Connectdb();
 
 
 app.use(cors({
-    origin: ['https://contactvault202.netlify.app'],
+    origin: ['https://your-actual-netlify-url.netlify.app'], 
     credentials: true,
-  }));
+}));
+
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
