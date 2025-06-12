@@ -10,10 +10,17 @@ const port = process.env.PORT || 8080;
 Connectdb();
 
 
-app.use(cors({
-    origin: ['https://your-actual-netlify-url.netlify.app'], 
+const corsOptions = {
+    origin: [
+        'http://localhost:3000', // For development
+        'https://contactvault202.netlify.app' // Will replace with your actual URL
+    ],
     credentials: true,
-}));
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 
 app.use(express.json());
