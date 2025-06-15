@@ -3,17 +3,15 @@ const dotenv = require('dotenv').config();
 const cors = require("cors");
 const errorHandler = require('./middleware/errorHandler');
 const Connectdb = require('./config/dbConnection');
-
 const app = express();
 const port = process.env.PORT || 8080;
 
 Connectdb();
 
-
 const corsOptions = {
     origin: [
-        'http://localhost:3000', 
-        'https://contactvault202.netlify.app' 
+        'http://localhost:3000',
+        'https://contactvault202.netlify.app'
     ],
     credentials: true,
     optionsSuccessStatus: 200
